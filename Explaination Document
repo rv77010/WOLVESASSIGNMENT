@@ -1,0 +1,51 @@
+A. Model Used 
+   1. For Person Detection: The Object Detector API requires an object detection model to be downloaded and stored in your project directory. 
+     If you do not already have a model, start with the default, recommended model. 
+     The other models presented in this section make trade-offs between latency and accuracy.
+      Model Name	  CPU Latency	  GPU       Latency
+EfficientDet-Lite0 float32 model	61.30ms 	27.83ms
+EfficientDet-Lite0 float16 model	53.97ms	  27.97ms
+EfficientDet-Lite0 int8 model	    29.31ms	-
+EfficientDet-Lite2 float32 model	197.98ms	41.15ms
+EfficientDet-Lite2 float16 model	198.77ms	47.31ms
+EfficientDet-Lite2 int8 model	    70.91ms	-
+SSD MobileNetV2    float32 model	36.30ms	  24.01ms
+SSD MobileNetV2    float16 model	37.35ms  	28.16ms
+
+ 2. For Pose detection: The Pose Landmarker uses a series of models to predict pose landmarks. T
+    The first model detects the presence of human bodies within an image frame, and the second model locates landmarks on the bodies.
+    The following models are packaged together into a downloadable model bundle:
+    Pose detection model: detects the presence of bodies with a few key pose landmarks.
+    Pose landmarker model: adds a complete mapping of the pose. The model outputs an estimate of 33 3-dimensional pose landmarks.
+    This bundle uses a convolutional neural network similar to MobileNetV2 and is optimized for on-device, real-time fitness applications. This variant of the BlazePose model uses GHUM, a 3D human shape modeling pipeline, to estimate the full 3D body pose of an individual in images or videos.
+
+B. FrameWork used : 
+MediaPipe Framework is the low-level component used to build efficient on-device machine learning pipelines, similar to the premade MediaPipe Solutions.
+To start using MediaPipe Framework, install MediaPipe Framework and start building example applications in C++, Android, and iOS. 
+Before using MediaPipe Framework, familiarize yourself with the following key Framework concepts:
+Packets
+Graphs
+Calculators
+
+C.Datasets on which the models are trained: COCO  dataset is used to train the data.
+
+D.Why you have used the above:  MediaPipe Solutions provides a suite of libraries and tools for you to quickly apply artificial intelligence (AI) and machine learning (ML) techniques in your applications. 
+You can plug these solutions into your applications immediately, customize them to your needs, and use them across multiple development platforms. 
+MediaPipe Solutions is part of the MediaPipe open source project, so you can further customize the solutions code to meet your application needs. 
+The dataset COCO is a large-scale object detection, segmentation, and captioning dataset. providing several features:
+a. Object segmentation
+b. Recognition in context
+c. Superpixel stuff segmentation
+d. 330K images (>200K labeled)
+e. 1.5 million object instances
+f. 80 object categories
+g. 91 stuff categories
+h. 5 captions per image
+i. 250,000 people with keypoints
+
+E. References to github repos and Research Papers: 
+a. Mediapipe solution
+b. https://codepen.io/mediapipe-preview/pen/vYrWvNg
+c.https://developers.google.com/mediapipe/solutions/vision/object_detector/python
+d.https://developers.google.com/mediapipe/solutions/vision/pose_landmarker/python
+e.https://github.com/googlesamples/mediapipe/tree/main/examples/pose_landmarker/python
